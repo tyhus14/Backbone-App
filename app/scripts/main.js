@@ -31,5 +31,12 @@ $(function(){
         markerIndex += 1;
       }
   });
+
+// Nav Animation
+
+$('.nav-btn').click(function(){
+	$('.main-map').toggleClass('active');
+})
+
 });
 
