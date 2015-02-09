@@ -7,7 +7,8 @@ $(function(){
       map: 'world_mill_en',
       markerStyle: {
         initial: {
-          fill: 'green'
+          fill: 'red',
+          stroke: 'red',
         }
       },
       container: $('#world-map'),

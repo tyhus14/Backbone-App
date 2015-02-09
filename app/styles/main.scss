@@ -3,6 +3,11 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+/* Colors */
+
+$color-one: #0ba49b;
+
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -12,7 +17,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 /* Space out content a bit */
 body {
-  
+  background-color: $color-one;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -26,7 +31,7 @@ body {
 /* Custom page header */
 .header {
   
-
+  background: $color-one;
   /* Make the masthead heading the same height as the navigation */
   h3 {
     margin-top: 0;
