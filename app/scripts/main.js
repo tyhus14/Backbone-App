@@ -1,42 +1,34 @@
 $(function(){
-  new jvm.Map({
-    container: $('#world-map'),
-    map: 'world_mill_en',
-    markers: [
-      [61.18, -149.53],
-      [21.18, -157.49],
-      [40.66, -73.56],
-      [41.52, -87.37],
-      [35.22, -80.84],
-      [31.52, -87.37]
-    ],
-    series: {
-      markers: [{
-        attribute: 'fill',
-        scale: ['#C8EEFF', '#0071A4'],
-        normalizeFunction: 'polynomial',
-        values: [408, 512, 550, 781],
-        legend: {
-          vertical: true
+  var map,
+      markerIndex = 0,
+      markersCoords = {};
+
+  map = new jvm.Map({
+      map: 'world_mill_en',
+      markerStyle: {
+        initial: {
+          fill: 'green'
         }
-      }],
-      regions: [{
-        scale: {
-          red: '#ff0000',
-          green: '#00ff00'
-        },
-        attribute: 'fill',
-        values: {
-          "US-KS": 'red',
-          "US-MO": 'red',
-          "US-IA": 'green',
-          "US-NE": 'green'
-        },
-        legend: {
-          horizontal: true,
-          title: 'Color'
-        }
-      }]
-    }
+      },
+      container: $('#world-map'),
+      onMarkerTipShow: function(e, label, code){
+        map.tip.text(markersCoords[code].lat.toFixed(2)+', '+markersCoords[code].lng.toFixed(2));
+      },
+      onMarkerClick: function(e, code){
+        map.removeMarkers([code]);
+        map.tip.hide();
+      }
+  });
+
+  map.container.click(function(e){
+      var latLng = map.pointToLatLng(e.offsetX, e.offsetY),
+          targetCls = $(e.target).attr('class');
+
+      if (latLng && (!targetCls || (targetCls && $(e.target).attr('class').indexOf('jvectormap-marker') === -1))) {
+        markersCoords[markerIndex] = latLng;
+        map.addMarker(markerIndex, {latLng: [latLng.lat, latLng.lng]});
+        markerIndex += 1;
+      }
   });
 });
+
