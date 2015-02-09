@@ -34,9 +34,10 @@ $(function(){
 
 // Nav Animation
 
-$('.nav-btn').click(function(){
-	$('.main-map').toggleClass('active');
-})
+	$('.nav-btn').click(function(){
+		$('.main-map').toggleClass('active');
+		$('.nav-main').toggleClass('active');
+	})
 
 });
 
